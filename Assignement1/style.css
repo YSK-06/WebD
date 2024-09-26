@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('C:/Users/Acer/Desktop/WebD/Assignement1/images/Bg4.jpg'); 
+    background-image: url('images/Bg4.jpg'); 
     background-size: cover; /* Ensures the image covers the whole screen */
     background-position: center; /* Centers the background image */
     background-attachment: fixed; /* Makes the background image stay in place */
