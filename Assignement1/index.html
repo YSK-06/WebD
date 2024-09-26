@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GODS - Gaming Website</title>
+    <link rel="icon" href="C:/Users/Acer/Desktop/WebD/Assignement1/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css"> <!-- External CSS file -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="C:/Users/Acer/Desktop/WebD/Assignement1/images/originalImage.png" alt="GODS Logo" class="logo">
+        <h1>Welcome to GODS Gaming Website</h1>
+        <p>The Ultimate Destination for Gamers</p>
+    </header>
+    
+
+    <nav class="sliding-menu">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776; Menu</label>
+        <ul class="menu">
+            <!-- <li><a href="#">Home</a></li> -->
+            <li><a href="#featured-games">Featured</a></li>
+            <li><a href="#new-releases">New Releases</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#subscribe">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="featured-games">
+            <h2>Featured Games</h2>
+            <table>
+                <tr>
+                    <th>Game Title</th>
+                    <th>Release Date</th>
+                    <th>Genre</th>
+                </tr>
+                <tr></tr>
+                    <td><a href="https://playvalorant.com/en-us/" target="_blank">Valorant</a></td>
+                    <td>April 2024</td>
+                    <td>PvP</td>
+                </tr>
+                <tr>
+                    <td><a href="https://diablo4.blizzard.com/" target="_blank">Diablo 4</a></td>
+                    <td>June 2023</td>
+                    <td>Action</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.counter-strike.net/cs2" target="_blank">Counter-Strike 2</a></td>
+                    <td>September 2023</td>
+                    <td>RPG</td>
+                </tr>
+            </table>
+            <hr>
+            <h3> More Features</h3>
+        </section>
+        <section id="home">
+            <h1>Featured Games</h1>
+            <img id="pic1" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img1.jpeg" alt="game">
+            <img id="pic2" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img2.jpeg" alt="game">
+            <img id="pic3" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img3.jpeg" alt="game">
+            <img id="pic4" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img4.jpeg" alt="game">
+            <img id="pic5" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img5.jpeg" alt="game">
+            <img id="pic6" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img6.jpeg" alt="game">
+            <img id="pic7" src="C:/Users/Acer/Desktop/WebD/Assignement1/images/img7.jpeg" alt="game">
+        </section>
+        <hr>
+
+        <section id="new-releases">
+            <h2>New Releases!</h2>
+            <p>New Trailer has arrived!</p>
+            <video controls>
+                <source src="C:/Users/Acer/Desktop/WebD/Assignement1/video/Valorant.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="marquee">
+                <p>🔥 New Game Releases: God of War - April 2023 | Legends Rise - June 2023 | Cyber Battleground - Coming Soon! 🔥</p>
+            </div>
+            <hr>
+
+            <!-- Audio player -->
+            <h3>New Valorant Theme Audio</h3>
+            <!-- Description for Audio -->
+    <p>Listen now to this New Valorant Theme Audio on our Website.</p>
+            <audio controls>
+                <source src="C:/Users/Acer/Desktop/WebD/Assignement1/audio/Valorant.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <!-- Summary element -->
+        <section>
+            <h2>Game Details</h2>
+            <details>
+                <summary>Click to view more details about the game</summary>
+                <p>Gods of War is an action game released in 2023. It has been critically acclaimed for its stunning graphics and immersive gameplay.</p>
+            </details>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About GODS</h2>
+                <p>Welcome to GODS, the ultimate destination for gamers who seek thrilling adventures, strategic challenges, and an immersive gaming experience. Founded with a passion for gaming, GODS brings together a community of players, creators, and enthusiasts who share a love for all things gaming.</p>
+
+                <p>At GODS, we believe in the power of games to bring people together, push the boundaries of creativity, and create stories that resonate with players around the world. Our platform is designed to offer in-depth reviews, the latest gaming news, gameplay tips, and exclusive content that keeps our audience engaged and excited.</p>
+
+                <p>Whether you are a competitive player, a casual gamer, or someone looking to explore the fascinating world of video games, GODS has something for everyone. We cover everything from AAA titles to indie gems, ensuring that every gamer finds their next adventure here.</p>
+
+                <p>Join us on this epic journey as we explore new worlds, conquer challenges, and embrace the spirit of gaming together!</p>
+
+        </section>
+        <hr>
+
+
+        <section id="subscribe">
+          <h2>Subscribe for Updates</h2>
+            <form action="subscribe.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact us: <a href="mailto:support@gods.com">support@gods.com</a> | Call us: <a href="tel:+1234567890">+123 456 7890</a></p>
+        <p>&copy; 2024 GODS Gaming Website</p>
+    </footer>
+</body>
+</html>
