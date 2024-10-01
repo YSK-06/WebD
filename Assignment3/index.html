@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Checklist</title>
+    <link rel="stylesheet" type="text/css" href="table.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    
+    <h2>Full Name: Yashraj Kadam</h2>
+    <h3>NUID: 002853503</h3>
+
+    
+    <table id="myTable">
+        <tr>
+            <th></th>
+            <th>STUDENT</th>
+            <th>ADVISOR</th>
+            <th>AWARD<br/>STATUS</th>
+            <th>SEMESTER</th>
+            <th>TYPE</th>
+            <th>BUDGET<br />#</th>
+            <th>PERCENTAGE</th>
+            <th>DELETE</th>
+            <th>EDIT</th>
+        </tr>
+        
+        <tr>
+            <td><input type="checkbox" class="select-row" /><br /><br /><img src="down.png" class="toggle-details" width="25px" /></td>
+            <td>Student 1</td>
+            <td>Teacher 1</td>
+            <td>Approved</td>
+            <td>Fall</td>
+            <td>TA</td>
+            <td>12345</td>
+            <td>100%</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="dropDownTextArea hidden"><td colspan="10">
+            Advisor:<br /><br />
+            Award Details<br />
+            Summer 1-2014 (TA)<br />
+            Budget Number:<br />
+            Tuition Number:<br />
+            Comments:<br /><br />
+            Award Status:<br /><br />
+        </td></tr>
+    </table>
+
+    <!-- Buttons -->
+    <button id="submit-btn" disabled>SUBMIT SELECTED AWARDS</button>
+    <button id="add-student-btn">Add New Student</button>
+
+    
+    <div id="popup-container" class="hidden">
+        <div id="popup">
+            <h2>Edit details of <span id="popup-student-name"></span></h2>
+            <div id="popup-info"></div>
+            <button id="update-btn">Update</button>
+            <button id="cancel-btn">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

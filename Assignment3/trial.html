@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Yashraj Kadam - NUID: 002853503</h1>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Teacher Name</th>
+                <th>Actions</th>
+                <th>Checkbox</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="row1">
+                <td>Student 1</td>
+                <td>Teacher 1</td>
+                <td><button class="expand">▶</button></td>
+                <td><input type="checkbox" class="rowCheck"></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="addStudent">Add New Student</button>
+    <button id="submitBtn" disabled>Submit</button>
+
+    <div id="messagePopup" class="popup hidden">
+        <span id="popupText"></span>
+        <button id="closePopup">Close</button>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #4CAF50;
+  text-align: center;
+}
+
+th, td {
+  padding: 8px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ddd;
+  color: #888;
+  cursor: not-allowed;
+}
+
+#popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.selected-row {
+  background-color: yellow;
+}
+
+#submit-awards {
+  background-color: #f57c00;
+  color: white;
+  border: none;
+}
+
+#update-button, #cancel-button {
+  padding: 10px 15px;
+  margin: 5px;
+}
+
+#popup {
+  min-width: 300px;
+}
+.hidden {
+  display: none;
+}
