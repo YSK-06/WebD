@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Feedback</title>
+    <style>
+        label {
+            float: left;
+            width: 150px;
+        }
+
+        #container {
+            width: 700px;
+            margin: auto;
+            background-color: beige;
+        }
+
+        main {
+            padding: 50px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #customizationsBox {
+            display: none;
+            margin-top: 10px;
+        }
+
+        #largeDrinkContainer {
+            display: none;
+            margin-top: 10px;
+        }
+
+        #resultDiv {
+            margin-top: 20px;
+        }
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <main>
+            <h2>Feedback</h2>
+            <h3>Love something? Hate something? Let us know!</h3>
+            Note: Fields marked with an asterisk (*) are mandatory
+            <br><br>
+            <form id="feedbackForm" method="post" novalidate>
+                <label>Title*:</label>
+                <input type="radio" name="title" id="miss" value="miss" required="required" />Miss
+                <input type="radio" name="title" id="mr" value="mr" required="required" />Mr.
+                <input type="radio" name="title" id="mrs" value="mrs" required="required" />Mrs.
+                <br><br>
+
+                <label for="firstName">First Name*:</label>
+                <input type="text" name="firstName" id="firstName" placeholder="First Name" required />
+                <br><br>
+
+                <label for="lastName">Last Name*:</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name" required />
+                <br><br>
+
+                <label for="emailId">Email Id*:</label>
+                <input type="email" name="emailId" id="emailId" placeholder="yourname@northeastern.edu" required />
+                <span class="error" id="emailError"></span>
+                <br><br>
+
+                <label for="phoneNumber">Phone Number*:</label>
+                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required />
+                <br><br>
+
+                <label for="zipcode">ZipCode*:</label>
+                <input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" required />
+                <br><br>
+
+                <label for="address1">Street Address 1*:</label>
+                <input type="text" name="address1" id="address1" required />
+                <br><br>
+
+                <label for="address2">Street Address 2:</label>
+                <input type="text" name="address2" id="address2" />
+                <br><br>
+
+                <label for="city">City*:</label>
+                <input type="text" name="city" id="city" required />
+                <br><br>
+
+                <label for="state">State*:</label>
+                <input type="text" name="state" id="state" required />
+                <br><br>
+
+                <label for="drink">Choose a drink*:</label>
+                <select name="drink" id="drink" required>
+                    <option value="">Please choose a drink</option>
+                    <option value="Tea">Tea</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Latte">Latte</option>
+                </select>
+                <br><br>
+
+                <div id="largeDrinkContainer">
+                    <input type="checkbox" name="largeDrink" id="largeDrink" /> 
+                    <label for="largeDrink">Large Drink</label>
+                </div>
+
+                <div id="customizationsBox">
+                    <label for="customizations">Additional Customizations:</label>
+                    <textarea name="customizations" id="customizations" rows="4" cols="40"></textarea>
+                </div>
+                <br>
+
+                <label>How did you hear*:</label>
+                <input type="checkbox" name="source" value="facebook" /> Facebook
+                <input type="checkbox" name="source" value="google" /> Google
+                <input type="checkbox" name="source" value="yelp" /> Yelp
+                <br><br>
+
+                <label for="comments">Comments*:</label>
+                <textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required></textarea>
+                <br><br>
+
+                <input type="submit" value="Submit" disabled />
+                <input type="reset" value="Reset">
+                <br><br>
+            </form>
+
+            <div id="resultDiv"></div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('feedbackForm');
+            const submitButton = form.querySelector('input[type="submit"]');
+            const emailInput = document.getElementById('emailId');
+            const emailError = document.getElementById('emailError');
+            const drinkSelect = document.getElementById('drink');
+            const largeDrinkCheckbox = document.getElementById('largeDrink');
+            const largeDrinkContainer = document.getElementById('largeDrinkContainer');
+            const customizationsBox = document.getElementById('customizationsBox');
+
+            // Disable submit button initially
+            submitButton.disabled = true;
+
+            // Email validation for northeastern.edu
+            const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@northeastern\.edu$/.test(email);
+
+            // Validate form fields
+            const validateForm = () => {
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                    }
+                });
+
+                const emailIsValid = validateEmail(emailInput.value);
+                if (!emailIsValid) {
+                    emailError.textContent = 'Please enter a valid northeastern.edu email address.';
+                } else {
+                    emailError.textContent = '';
+                }
+
+                isValid = isValid && emailIsValid;
+                submitButton.disabled = !isValid;
+            };
+
+            // Show or hide large drink checkbox and customizations
+            drinkSelect.addEventListener('change', () => {
+                if (drinkSelect.value) {
+                    largeDrinkContainer.style.display = 'block';
+                    largeDrinkCheckbox.nextElementSibling.textContent = `${drinkSelect.value} Large (+$1)`;
+                } else {
+                    largeDrinkContainer.style.display = 'none';
+                    customizationsBox.style.display = 'none';
+                    largeDrinkCheckbox.checked = false;
+                }
+            });
+
+            largeDrinkCheckbox.addEventListener('change', () => {
+                if (largeDrinkCheckbox.checked) {
+                    customizationsBox.style.display = 'block';
+                } else {
+                    customizationsBox.style.display = 'none';
+                }
+            });
+
+            // Validate on input changes
+            form.addEventListener('input', validateForm);
+
+            // Handle form submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent page reload on form submission
+
+                // Get form data
+                const formData = new FormData(form);
+
+                // Create a table to display the submitted data
+                let tableHTML = `
+                    <table>
+                        <tr><th>Field</th><th>Value</th></tr>
+                        <tr><td>Title</td><td>${formData.get('title')}</td></tr>
+                        <tr><td>First Name</td><td>${formData.get('firstName')}</td></tr>
+                        <tr><td>Last Name</td><td>${formData.get('lastName')}</td></tr>
+                        <tr><td>Email</td><td>${formData.get('emailId')}</td></tr>
+                        <tr><td>Phone Number</td><td>${formData.get('phoneNumber')}</td></tr>
+                        <tr><td>Zip Code</td><td>${formData.get('zipcode')}</td></tr>
+                        <tr><td>Street Address 1</td><td>${formData.get('address1')}</td></tr>
+                        <tr><td>Street Address 2</td><td>${formData.get('address2')}</td></tr>
+                        <tr><td>City</td><td>${formData.get('city')}</td></tr>
+                        <tr><td>State</td><td>${formData.get('state')}</td></tr>
+                        <tr><td>Chosen Drink</td><td>${formData.get('drink')}</td></tr>
+                        <tr><td>Large Drink</td><td>${formData.get('largeDrink') ? 'Yes' : 'No'}</td></tr>
+                        <tr><td>Customizations</td><td>${formData.get('customizations')}</td></tr>
+                        <tr><td>How did you hear</td><td>${formData.getAll('source').join(', ')}</td></tr>
+                        <tr><td>Comments</td><td>${formData.get('text')}</td></tr>
+                    </table>
+                `;
+
+                // Display the table in the result div
+                const resultDiv = document.getElementById('resultDiv');
+                resultDiv.innerHTML = tableHTML;
+            });
+        });
+    </script>
+</body>
+
+</html>
