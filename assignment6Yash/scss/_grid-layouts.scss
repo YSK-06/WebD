@@ -1,0 +1,50 @@
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  
+  
+  table {
+    border-collapse: collapse;
+    width: calculateWidth(50%);
+    margin: 20px auto;
+  
+    th, td {
+      border: 1px solid black;
+      padding: 16px;
+      text-align: left;
+      
+    }
+  a {
+    &:hover {
+      background-color: #2f8e87;
+      color: $link-hover-color;
+    }
+  }
+    th {
+      background-color: $table-background-color;
+    }
+  }
+  
+
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+
+    gap: 10px; 
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    border: 1px solid #080808;
+}
+
+

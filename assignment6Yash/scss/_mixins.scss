@@ -1,0 +1,21 @@
+
+@mixin button-styles {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+ 
+  
+  .upload-section {
+    background-color: $upload-section-background-color;
+    padding: 50px;
+    border: 1px solid #392525;
+    height: calculateWidth(40%);
+    width: calculateWidth(40%);
+    margin-left: 25%;
+    margin-top: 15%;
+  }
