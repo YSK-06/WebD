@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch Web Application</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        #stopwatch {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #startButton {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #stopButton {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #resetButton {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #datePicker {
+            margin-top: 20px;
+            padding: 5px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Stopwatch</h1>
+    <div id="stopwatch">00:00:00</div>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+    <button id="resetButton">Reset</button>
+    <input type="date" id="datePicker">
+
+    <script src="stopwatch.js"></script>
+</body>
+</html>
