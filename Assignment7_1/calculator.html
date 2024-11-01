@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Welcome, <span id="loggedInUser"></span></h2>
+
+        <label for="num1">Number 1:</label>
+        <input type="text" id="num1">
+        <span id="num1Error" class="error"></span>
+
+        <label for="num2">Number 2:</label>
+        <input type="text" id="num2">
+        <span id="num2Error" class="error"></span>
+
+        <div class="operations">
+            <button id="add">Add</button>
+            <button id="subtract">Subtract</button>
+            <button id="multiply">Multiply</button>
+            <button id="divide">Divide</button>
+        </div>
+
+        <h3>Result: <span id="result"></span></h3>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const username = new URLSearchParams(window.location.search).get('username');
+            $('#loggedInUser').text(username);
+
+            const validateInput = (value) => /^[0-9]+$/.test(value);
+
+            const calculate = (operation) => {
+                let num1 = $('#num1').val().trim();
+                let num2 = $('#num2').val().trim();
+                let result;
+
+                if (!validateInput(num1) || !validateInput(num2)) {
+                    $('#num1Error').text(!validateInput(num1) ? "Invalid input" : "");
+                    $('#num2Error').text(!validateInput(num2) ? "Invalid input" : "");
+                    return;
+                } else {
+                    $('#num1Error').text("");
+                    $('#num2Error').text("");
+                }
+
+                num1 = parseFloat(num1);
+                num2 = parseFloat(num2);
+
+                switch (operation) {
+                    case 'add':
+                        result = num1 + num2;
+                        break;
+                    case 'subtract':
+                        result = num1 - num2;
+                        break;
+                    case 'multiply':
+                        result = num1 * num2;
+                        break;
+                    case 'divide':
+                        if (num2 === 0) {
+                            $('#num2Error').text("Cannot divide by zero.");
+                            return;
+                        }
+                        result = num1 / num2;
+                        break;
+                    default:
+                        result = null;
+                }
+
+                $('#result').text(result);
+            };
+
+            $('#add').on('click', () => calculate('add'));
+            $('#subtract').on('click', () => calculate('subtract'));
+            $('#multiply').on('click', () => calculate('multiply'));
+            $('#divide').on('click', () => calculate('divide'));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span id="emailError" class="error"></span>
+
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username">
+            <span id="usernameError" class="error"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <span id="confirmPasswordError" class="error"></span>
+
+            <button type="submit" id="loginButton" disabled>Login</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#loginButton').prop('disabled', false);
+
+            const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@northeastern\.edu$/.test(email);
+            const checkSpecialChars = (text) => /^[a-zA-Z0-9]+$/.test(text);
+
+            const validateForm = () => {
+                let valid = true;
+                const email = $('#email').val().trim();
+                const username = $('#username').val().trim();
+                const password = $('#password').val().trim();
+                const confirmPassword = $('#confirmPassword').val().trim();
+
+                if (!email || !validateEmail(email)) {
+                    $('#emailError').text("Enter a valid Northeastern email.");
+                    valid = false;
+                } else {
+                    $('#emailError').text("");
+                }
+
+                if (!username || !checkSpecialChars(username)) {
+                    $('#usernameError').text("Username cannot have special characters.");
+                    valid = false;
+                } else {
+                    $('#usernameError').text("");
+                }
+
+                if (password.length < 6) {
+                    $('#passwordError').text("Password must be at least 6 characters.");
+                    valid = false;
+                } else {
+                    $('#passwordError').text("");
+                }
+
+                if (confirmPassword !== password) {
+                    $('#confirmPasswordError').text("Passwords do not match.");
+                    valid = false;
+                } else {
+                    $('#confirmPasswordError').text("");
+                }
+
+                return valid;
+            };
+
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                if (validateForm()) {
+                    window.location.href = 'calculator.html?username=' + encodeURIComponent($('#username').val());
+                }
+            });
+        });
+    </script>
+</body>
+</html>
